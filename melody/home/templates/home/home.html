@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Melody</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    
+</head>
+<body>
+
+
+<header>
+  <style>
+    /* Custom CSS for Navbar */
+    .navbar-custom {
+        background-color: #020b14ff; /* Background color for the navbar */
+        padding-top: 20px; /* Add padding to the top */
+        padding-bottom: 20px; /* Add padding to the bottom */
+    }
+
+    .navbar-custom .navbar-brand,
+    .navbar-custom .nav-link {
+        color: white; /* Text color for the navbar items */
+    }
+
+    .navbar-custom .nav-link:hover {
+        color: yellow; /* Text color on hover */
+    }
+
+    /* Custom CSS for "Sign up" button */
+    .signup-button {
+        background-color: yellow; /* Button background color */
+        color: black !important; /* Button text color (important to override Bootstrap) */
+        border-radius: 5px; /* Rounded corners */
+        padding: 5px 15px; /* Adjust padding as needed */
+    }
+
+    /* Custom CSS to align navbar items to the right */
+    .ml-auto {
+        margin-left: auto !important;
+    }
+    .navbar-nav .nav-item {
+        margin-left: 10px; /* Add margin to the bottom of list items */
+    }
+</style>
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+        <!-- Brand/logo -->
+        <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 35px;color: yellow;"><b>Mood Melody</b></a>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto"> <!-- Use ml-auto to align to the right -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Create</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about/">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact/">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signin/">License</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signin/">API</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signin/">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signin/">Sign in</a>
+                </li>
+                <li class="nav-item" style="padding-top: 4px;">
+                    <a class="nav-link signup-button" href="/signup/"><b>Sign up</b></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Include Bootstrap JS and jQuery (required for the navbar toggle button) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</header>
+
+<main>
+    
+    <style>
+        body{
+            background: #040b13ff;
+        }
+        .select-text{
+            color: white;
+            margin-bottom: 10px;
+        }
+        main{
+            margin-left: 8%;
+            margin-right: 8%;
+            margin-top: 10px;
+        }
+        
+    </style>
+    <style>
+        /* Basic styling for the grid container */
+        .grid-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px; /* Adjust the gap between buttons as needed */
+        }
+
+        /* Style for each square button */
+        .grid-item {
+            width: 200px; /* Adjust the width as needed */
+            height: 200px; /* Adjust the height as needed */
+            background-color: #5c5c5c; /* Button background color */
+            color: #fff; /* Text color */
+            text-align: left; /* Align the text to the left */
+            padding: 10px; /* Add padding for spacing */
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10%; /* Make the button rounded */
+            transition: border 0.1s; /* Add a smooth transition to the border outline */
+            
+        }
+        
+        /* Neon border outline on hover */
+        .grid-item:hover {
+            border: 5px solid rgba(52, 152, 219, 0.7); /* Neon border outline */
+        }
+        .moods{
+            background-color: rgba(36, 36, 36, 0.709);
+            color: rgb(255, 255, 255) !important;
+            border-radius: 10px;
+            padding-left: 10px;
+        }
+    </style>
+
+    
+    <div class="select-text">
+        <h5 style="font-size: 15px;">
+            START GENERATING
+        </h5>
+        <h1><b>Select Your Mood</b> </h1>
+    </div>
+    <div class="grid-container">
+        <!-- Generate x number of grid items -->
+        <div class="grid-container" id="moodGrid">
+            <!-- Labels for the buttons -->
+            <div class="grid-item"><p class="moods">happy</p></div>
+            <div class="grid-item"><p class="moods">sad</p></div>
+            <div class="grid-item"><p class="moods">Laid back</p></div>
+            <div class="grid-item"><p class="moods">sentimental</p></div>
+            <div class="grid-item"><p class="moods">lofi</p></div>
+            <div class="grid-item"><p class="moods">electric</p></div>
+            <div class="grid-item"><p class="moods">romantic</p></div>
+            <div class="grid-item"><p class="moods">angry</p></div>
+            <div class="grid-item"><p class="moods">funny & weird</p></div>
+            <div class="grid-item"><p class="moods">mysterious</p></div>
+            <div class="grid-item"><p class="moods">peaceful</p></div>
+            <div class="grid-item"><p class="moods">funky</p></div>
+            <div class="grid-item"><p class="moods">sexy</p></div>
+            <div class="grid-item"><p class="moods">smooth</p></div>
+            <div class="grid-item"><p class="moods">restless</p></div>
+            <div class="grid-item"><p class="moods">suspense</p></div>
+            <div class="grid-item"><p class="moods">scary</p></div>
+            <div class="grid-item"><p class="moods">trap</p></div>
+        </div>
+        
+        <script>
+            // Get all the buttons by their id
+            const buttons = document.querySelectorAll('.grid-item');
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const genreName = button.querySelector('.moods').textContent.toLowerCase();
+                    const genreURL = `/genre/${genreName}/`; // Construct the URL
+                    window.location.href = genreURL; // Redirect to the genre detail page
+                });
+            });
+        </script>
+    </div>
+</main>
+
+
+<footer>
+    <style>
+        footer{
+            margin: 50px;
+        }
+    </style>
+</footer>
+</body>
+</html>

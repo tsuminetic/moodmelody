@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Melody</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    
+</head>
+<body>
+
+
+<header>
+  <style>
+    /* Custom CSS for Navbar */
+    .navbar-custom {
+        background-color: #020b14ff; /* Background color for the navbar */
+        padding-top: 20px; /* Add padding to the top */
+        padding-bottom: 20px; /* Add padding to the bottom */
+    }
+
+    .navbar-custom .navbar-brand,
+    .navbar-custom .nav-link {
+        color: white; /* Text color for the navbar items */
+    }
+
+    .navbar-custom .nav-link:hover {
+        color: yellow; /* Text color on hover */
+    }
+
+    /* Custom CSS for "Sign up" button */
+    .signup-button {
+        background-color: yellow; /* Button background color */
+        color: black !important; /* Button text color (important to override Bootstrap) */
+        border-radius: 5px; /* Rounded corners */
+        padding: 5px 15px; /* Adjust padding as needed */
+    }
+
+    /* Custom CSS to align navbar items to the right */
+    .ml-auto {
+        margin-left: auto !important;
+    }
+    .navbar-nav .nav-item {
+        margin-left: 10px; /* Add margin to the bottom of list items */
+    }
+</style>
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+        <!-- Brand/logo -->
+        <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 35px;color: yellow;"><b>Mood Melody</b></a>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto"> <!-- Use ml-auto to align to the right -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Create</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about/">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact/">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signin/">API</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signin/" style="pointer-events: none;color: gray;">Autotuner</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signin/" style="pointer-events: none;color: gray;">Lyrics Generator</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signin/">Sign in</a>
+                </li>
+                <li class="nav-item" style="padding-top: 4px;">
+                    <a class="nav-link signup-button" href="/signup/"><b>Sign up</b></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Include Bootstrap JS and jQuery (required for the navbar toggle button) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</header>
+
+<main>
+    
+    <style>
+        body{
+            background: #041923ff;
+        }
+        .select-text{
+            color: white;
+            margin-bottom: 30px;
+        }
+        main{
+            margin-left: 8%;
+            margin-right: 8%;
+            margin-top: 10px;
+        }
+        
+    </style>
+    <style>
+        /* Basic styling for the grid container */
+        .grid-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: start;
+            gap: 10px; /* Adjust the gap between buttons as needed */
+        }
+
+        /* Style for each square button */
+        .grid-item {
+            width: 200px; /* Adjust the width as needed */
+            height: 200px; /* Adjust the height as needed */
+            background-color: #5c5c5c; /* Button background color */
+            color: #fff; /* Text color */
+            text-align: left; /* Align the text to the left */
+            padding: 10px; /* Add padding for spacing */
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10%; /* Make the button rounded */
+            transition: border 0.1s; /* Add a smooth transition to the border outline */
+            border: 2px solid rgba(52, 152, 219, 0.7);
+            
+        }
+    
+        .moods{
+            background-color: rgba(36, 36, 36, 0.709);
+            color: rgb(255, 255, 255) !important;
+            border-radius: 10px;
+            padding-left: 10px;
+        }
+    </style>
+
+    
+    <div class="select-text">
+        <h5 style="font-size: 15px;">
+            START GENERATING
+        </h5>
+        <h1><b>GENERATE MUSIC</b> </h1>
+    </div>
+    <style>
+.select {
+    margin-bottom: 15px;
+    width: 50%;
+    margin-left: 10px;
+}    .select select {
+        font-family: 'Arial';
+        font-size: 45px;
+        width: 50%;
+        padding: 0px 0px;
+        outline: 0;
+        border: none;
+        border-radius: 0px;
+        background: #041923ff;
+        color: #fffb93;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+        .select select::-ms-expand {
+            display: none;
+            border: none;
+        }
+        .select select:hover,
+        .select select:focus {
+            color: #dbd300;
+            background: #041923ff;
+        }
+        .select select:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+        
+        .btn{
+        
+        font-family: Roboto, sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        color: #000000;
+        background-color: #fffc94;
+        padding: 10px 30px;
+        border: none;
+        box-shadow: none;
+        border-radius: 50px;
+        transition : 425ms;
+        transform: translateY(0);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        text-transform: uppercase;
+        }
+        
+        .btn:hover{
+        
+        transition : 425ms;
+        padding: 10px 41px;
+        transform : translateY(-0px);
+        background-color: #fffed9;
+        color: #000000;
+        border: none;
+        }
+        .genbut{
+            margin-top: 10px;
+        }
+        </style>
+    <div class="grid-container">
+        <!-- Generate x number of grid items -->
+        <div class="grid-container" id="moodGrid">
+            <!-- Labels for the buttons -->
+            <div class="grid-item"><p class="moods">{{genre_name}}</p></div>
+            <div class="select">
+                <label for="durationSelect" class="form-label text-white">Choose the Length:</label>
+                <select>
+                    
+                    <option>00:15</option>
+                    <option>00:30</option>
+                    <option>00:45</option>
+                    <option>01:00</option>
+                </select>
+                </div>
+            </div>
+       
+    </div>
+    <style>
+    #boths {
+        display: none; /* Hide the audio container initially */
+    }
+</style>
+    
+    <div id="generate-button" class="genbut"><button class="btn">GENERATE <img src="https://www.htmlcssbuttongenerator.com/iconExample-eye-lined.svg" style="width:25px; margin-left:3px; margin-right:3px; flex-direction: row;"></button></div>
+
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Add your custom CSS here */
+        #audio-container {
+            margin-top: 20px;
+            text-align: center;
+            padding: 20px;
+            background-color: #020e16ff;
+            border-radius: 30px;
+        }
+
+        #controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+        }
+
+        #progress-bar {
+            flex: 1;
+            margin: 0 5px;
+        }
+        #play-pause[disabled]{
+            background-color: gray;
+        }
+    </style>
+    <div id="boths">
+<div id="audio-container">
+    <audio id="audio">
+        <source src="{{ audio_url }}" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <div id="controls" class="mt-2">
+        <button id="play-pause" class="btn btn-primary mx-2">Play</button>
+        <div class="mx-2">
+            <span id="current-time" style="color: white;">0:00</span>
+        </div>
+        <progress id="progress-bar" max="100" value="0" class="mx-2"></progress>
+        <button id="mute" class="btn btn-secondary mx-2">Mute</button>
+        <a id="download" href="{{ audio_url }}" download class="btn btn-success mx-2">Download</a>
+    </div>
+</div>
+
+<div id="audio-container" style="pointer-events: none; opacity: 0.4;">
+    <audio id="audio">
+        <source src="{{ audio_url }}" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <div id="controls" class="mt-2">
+        <button id="play-pause" class="btn btn-primary mx-2">Play</button>
+        <div class="mx-2">
+            <span id="current-time" style="color: white;">0:00</span>
+        </div>
+        <progress id="progress-bar" max="100" value="0" class="mx-2"></progress>
+        <button id="mute" class="btn btn-secondary mx-2">Mute</button>
+        <a id="download" href="{{ audio_url }}" download class="btn btn-success mx-2">Download</a>
+    </div>
+</div>
+</div>
+
+
+<script>
+// JavaScript for controlling the audio player
+const audio = document.getElementById('audio');
+const playPauseButton = document.getElementById('play-pause');
+const progressBar = document.getElementById('progress-bar');
+const currentTimeDisplay = document.getElementById('current-time');
+const muteButton = document.getElementById('mute');
+const downloadButton = document.getElementById('download');
+
+let isGenerating = false;
+        let isPlaying = false;
+
+        // Function to toggle the Play button state
+        function togglePlayButton() {
+        if (isGenerating) {
+            playPauseButton.textContent = 'Generating...';
+            playPauseButton.disabled = true; // Disable the button
+            setTimeout(() => {
+                playPauseButton.textContent = 'Generating.';
+                setTimeout(() => {
+                    playPauseButton.textContent = 'Generating..';
+                }, 1000);
+            }, 1000);
+        } else if (isPlaying) {
+            playPauseButton.textContent = 'Pause';
+        } else {
+            playPauseButton.textContent = 'Play';
+            playPauseButton.disabled = false; // Enable the button
+        }
+    }
+
+    playPauseButton.addEventListener('click', () => {
+        if (!isGenerating && !isPlaying) {
+            isGenerating = true;
+            togglePlayButton();
+
+            setTimeout(() => {
+                isGenerating = false;
+                togglePlayButton();
+
+                // Start playing the audio here after 3 seconds
+                audio.play().then(() => {
+                    isPlaying = true;
+                    togglePlayButton();
+                });
+            }, 3000); // Disable for 3 seconds
+        } else if (isPlaying) {
+            isPlaying = false;
+            togglePlayButton();
+
+            // Pause the audio here
+            audio.pause();
+        }
+    });
+// Handle user click on the progress bar to seek to a specific position
+progressBar.addEventListener('click', (event) => {
+    const offsetX = event.clientX - progressBar.getBoundingClientRect().left;
+    const newTime = (offsetX / progressBar.clientWidth) * audio.duration;
+    audio.currentTime = newTime;
+});
+
+muteButton.addEventListener('click', () => {
+    audio.muted = !audio.muted;
+    if (audio.muted) {
+        muteButton.textContent = 'Unmute';
+    } else {
+        muteButton.textContent = 'Mute';
+    }
+});
+
+audio.addEventListener('timeupdate', () => {
+    const currentTime = audio.currentTime;
+    const duration = audio.duration;
+    
+    if (!isNaN(duration) && isFinite(duration)) {
+        currentTimeDisplay.textContent = formatTime(currentTime);
+        progressBar.value = (currentTime / duration) * 100;
+    }
+});
+
+// Format time in MM:SS format
+function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    seconds = Math.floor(seconds % 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
+
+downloadButton.addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.href = audio.src;
+    a.download = 'generated.mp3';
+    a.click();
+});
+document.getElementById('generate-button').addEventListener('click', () => {
+    const audioContainer = document.getElementById('boths');
+    audioContainer.style.display = 'block'; // Show the audio container
+});
+
+
+</script>
+
+</main>
+
+
+<footer>
+    <style>
+        footer{
+            margin: 50px;
+        }
+    </style>
+</footer>
+</body>
+</html>
