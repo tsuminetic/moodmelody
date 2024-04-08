@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mood Melody</title>
+    <title>Mood Melody ai</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
@@ -27,12 +27,12 @@
     }
 
     .navbar-custom .nav-link:hover {
-        color: yellow; /* Text color on hover */
+        color: skyblue; /* Text color on hover */
     }
 
     /* Custom CSS for "Sign up" button */
     .signup-button {
-        background-color: yellow; /* Button background color */
+        background-color: skyblue; /* Button background color */
         color: black !important; /* Button text color (important to override Bootstrap) */
         border-radius: 5px; /* Rounded corners */
         padding: 5px 15px; /* Adjust padding as needed */
@@ -45,11 +45,14 @@
     .navbar-nav .nav-item {
         margin-left: 10px; /* Add margin to the bottom of list items */
     }
+    .navbar-custom .navbar-toggler-icon {
+    color: #dbd300;
+}
 </style>
 <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container">
         <!-- Brand/logo -->
-        <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 35px;color: yellow;"><b>Mood Melody</b></a>
+        <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 30px;color: skyblue;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"><b>Mood Melody ai</b></a>
 
         <!-- Toggler/collapsibe Button -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -73,10 +76,10 @@
                     <a class="nav-link" href="/signin/">API</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/signin/" style="pointer-events: none;color: gray;">Autotuner</a>
+                    <a class="nav-link" href="{% url 'coming_soon' %}">Autotuner</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/signin/" style="pointer-events: none;color: gray;">Lyrics Generator</a>
+                    <a class="nav-link" href="{% url 'coming_soon' %}" >Lyrics Generator</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/signin/">Sign in</a>
@@ -165,18 +168,30 @@
         border: none;
         border-radius: 0px;
         background: #041923ff;
-        color: #fffb93;
+        color: skyblue;
         appearance: none;
         -webkit-appearance: none;
         -moz-appearance: none;
     }
+    @media (max-width: 768px) {
+    .select select {
+        width: 100%;
+    }
+}
+
+/* Media query for screens with a minimum width of 769px (typical desktop screens) */
+@media (min-width: 769px) {
+    .select select {
+        width: 50%;
+    }
+}
         .select select::-ms-expand {
             display: none;
             border: none;
         }
         .select select:hover,
         .select select:focus {
-            color: #dbd300;
+            color: skyblue;
             background: #041923ff;
         }
         .select select:disabled {
@@ -193,7 +208,7 @@
         font-weight: 400;
         font-size: 16px;
         color: #000000;
-        background-color: #fffc94;
+        background-color: skyblue;
         padding: 10px 30px;
         border: none;
         box-shadow: none;
@@ -212,7 +227,7 @@
         transition : 425ms;
         padding: 10px 41px;
         transform : translateY(-0px);
-        background-color: #fffed9;
+        background-color: rgb(165, 210, 227);
         color: #000000;
         border: none;
         }
@@ -272,6 +287,23 @@
         }
         #play-pause[disabled]{
             background-color: gray;
+        }
+    </style>
+    <style>
+        /* Media query for screens with a maximum width of 390px (iPhone 12 Pro portrait mode) */
+        @media (max-width: 768px) {
+            #controls {
+                flex-direction: row; /* Revert to horizontal layout on small screens */
+                flex-wrap: wrap; /* Allow controls to wrap to the next line if needed */
+                justify-content: space-between;
+            }
+            #mute{
+                margin-bottom: 10px;
+            }
+            #progress-bar {
+                flex-basis: 100%; /* Take full width on small screens */
+                margin: 20px; /* Add more space between controls and progress bar */
+            }
         }
     </style>
     <div id="boths">

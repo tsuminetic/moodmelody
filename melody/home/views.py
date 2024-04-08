@@ -15,3 +15,6 @@ def genre_lofi(request):
 def genre_romantic(request):
     audio_url = '/static/home/audio/romantic.mp3'  # Replace with the actual path to your audio file
     return render(request, 'home/genre_details.html', {'genre_name': 'romantic','audio_url': audio_url})
+
+def coming_soon(request):
+    return render(request, 'home/coming_soon.html')
